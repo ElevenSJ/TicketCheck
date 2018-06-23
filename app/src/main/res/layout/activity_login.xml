@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:background="@drawable/bg_login">
+
+    <View
+        android:id="@+id/line_venue"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray_AD"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_phone_value"
+        style="@style/TxtCommonWhiteNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:background="@color/transparent"
+        android:ems="11"
+        android:gravity="left|center_vertical|fill_vertical"
+        android:hint="请输入手机号码 "
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:textColorHint="@color/common_hint_text"
+        app:layout_constraintBottom_toTopOf="@+id/line_venue"
+        app:layout_constraintStart_toEndOf="@+id/tv_phone_name" />
+
+    <TextView
+        android:id="@+id/tv_phone_name"
+        style="@style/TxtCommonWhiteNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="手机号"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_phone_value"
+        app:layout_constraintStart_toStartOf="@+id/line_venue"
+        app:layout_constraintTop_toTopOf="@+id/edt_phone_value" />
+
+    <EditText
+        android:id="@+id/edt_code_value"
+        style="@style/TxtCommonWhiteNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/transparent"
+        android:digits="1234567890qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP"
+        android:ems="11"
+        android:gravity="left|center_vertical"
+        android:hint="清输入验证码"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/common_hint_text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_phone_value"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_phone_value"
+        app:layout_constraintTop_toTopOf="@+id/line_venue" />
+
+    <TextView
+        android:id="@+id/tv_code_name"
+        style="@style/TxtCommonWhiteNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证码"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_code_value"
+        app:layout_constraintEnd_toEndOf="@+id/tv_phone_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_phone_name"
+        app:layout_constraintTop_toTopOf="@+id/edt_code_value" />
+
+    <Button
+        android:id="@+id/bt_getcode"
+        style="@style/TxtCommonWhiteLittle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bt_fillet_selector"
+        android:ems="11"
+        android:gravity="center"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="2dp"
+        android:text="验证码"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_code_value"
+        app:layout_constraintEnd_toEndOf="@+id/line_venue"
+        app:layout_constraintTop_toBottomOf="@+id/line_venue" />
+
+    <Button
+        android:id="@+id/bt_login"
+        style="@style/TxtCommonWhiteNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="登录"
+        android:background="@drawable/shape_circle_button"
+        app:layout_constraintEnd_toEndOf="@+id/line_venue"
+        app:layout_constraintStart_toStartOf="@+id/line_venue"
+        app:layout_constraintTop_toBottomOf="@+id/edt_code_value" />
+
+    <TextView
+        android:id="@+id/tv_register_detail"
+        style="@style/TxtCommonWhiteSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:autoLink="all"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="还没有账号，立即注册"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_login"
+        app:layout_constraintVertical_bias="0.081" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_phone_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/img_login_logo" />
+
+
+</android.support.constraint.ConstraintLayout>

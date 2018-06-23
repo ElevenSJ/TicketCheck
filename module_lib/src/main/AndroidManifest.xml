@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sj.module_lib">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <application>
+        <meta-data
+            android:name="com.sj.module_lib.glide.OkHttpGlideModule"
+            android:value="GlideModule" />
+
+
+    </application>
+</manifest>

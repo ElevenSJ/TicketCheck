@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/activity_title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/ryl_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_title"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_empty="@layout/layout_view_empty"
+        app:layout_error="@layout/layout_load_error"
+        app:layout_progress="@layout/layout_load_progress"
+        app:scrollbarStyle="insideOverlay" />
+</android.support.constraint.ConstraintLayout>
