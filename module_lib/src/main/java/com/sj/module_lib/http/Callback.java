@@ -44,8 +44,8 @@ public abstract class Callback extends HttpCallback<String> {
                 Utils.getContext().startActivity(intent);
             }
         }
-        if (error_code.equals("9")&&error_message.equals("当前账号已在其他设备登录")||enableShowToast()) {
-            ToastUtils.showLongToast(error_message);
+        if ((error_code.equals("9")&&error_message.equals("当前账号已在其他设备登录"))||enableShowToast()) {
+            ToastUtils.showShortToast(error_message);
         }
         onFinish();
     }

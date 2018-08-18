@@ -1,11 +1,13 @@
 package com.sj.ticket.activity.bean;
 
+import java.io.Serializable;
+
 /**
  * 创建时间: on 2018/6/19.
  * 创建人: 孙杰
  * 功能描述:
  */
-public class CourseBean {
+public class CourseBean implements Serializable{
     /**
      * number : 1
      * classPlace : 上课地点

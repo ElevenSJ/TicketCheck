@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.sj.module_lib.glide.ImageUtils;
-import com.sj.module_lib.widgets.AmountView;
 import com.sj.ticket.R;
+import com.sj.ticket.activity.ClassDetailActivity;
 import com.sj.ticket.activity.CustomCaptureActivity;
 import com.sj.ticket.activity.CustomGunCaptureActivity;
 import com.sj.ticket.activity.bean.CourseBean;
@@ -28,6 +28,7 @@ import com.sj.ticket.activity.bean.CourseBean;
 
 public class CourseRyvAdapter extends RecyclerArrayAdapter<CourseBean> {
     Context context;
+
     public CourseRyvAdapter(Context context) {
         super(context);
         this.context = context;
@@ -46,6 +47,7 @@ public class CourseRyvAdapter extends RecyclerArrayAdapter<CourseBean> {
         ImageView imgIcon;
         Button btQrCamera;
         Button btQrGang;
+        TextView txtHistory;
 
         public CourseRyvHolder(ViewGroup parent) {
             super(parent, R.layout.course_item);
@@ -55,26 +57,35 @@ public class CourseRyvAdapter extends RecyclerArrayAdapter<CourseBean> {
             this.imgIcon = $(R.id.img_icon);
             this.btQrGang = $(R.id.bt_qr_gang);
             this.btQrCamera = $(R.id.bt_qr_camera);
+            this.txtHistory = $(R.id.tv_history);
         }
 
         @Override
         public void setData(final CourseBean data) {
             super.setData(data);
-            ImageUtils.loadImageWithError(data.getIcon(),R.mipmap.ic_launcher,imgIcon);
+            ImageUtils.loadImageWithError(data.getIcon(), R.mipmap.ic_launcher, imgIcon);
             txtName.setText(data.getName());
-            txtTime.setText(String.format("上课时间：%s",data.getClassTime()));
-            txtAddress.setText(String.format("上课地点：%s",data.getClassPlace()));
+            txtTime.setText(String.format("上课时间：%s", data.getClassTime()));
+            txtAddress.setText(String.format("上课地点：%s", data.getClassPlace()));
             btQrGang.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showDialog(v.getContext(),data.getId());
+                    showDialog(v.getContext(), data.getId());
                 }
             });
             btQrCamera.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), CustomCaptureActivity.class);
-                    intent.putExtra("id",data.getId());
+                    intent.putExtra("id", data.getId());
+                    v.getContext().startActivity(intent);
+                }
+            });
+            txtHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ClassDetailActivity.class);
+                    intent.putExtra("data", data);
                     v.getContext().startActivity(intent);
                 }
             });
@@ -82,8 +93,6 @@ public class CourseRyvAdapter extends RecyclerArrayAdapter<CourseBean> {
 
         public void showDialog(final Context mContext, final String id) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext, R.style.AlertDialog);
-            builder.setIcon(R.mipmap.ic_launcher);
-            builder.setTitle("确认");
             builder.setMessage("请确认蓝牙是否已连接扫码枪");//提示内容
             builder.setPositiveButton("已连接", new DialogInterface.OnClickListener() {
                 @Override

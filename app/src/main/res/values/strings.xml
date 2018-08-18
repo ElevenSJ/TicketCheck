@@ -2,5 +2,7 @@
     <string name="app_name">i保研修院检票</string>
 
     <!--学生信息-->
-    <string name="txt_student_info_name">姓名：\n性别：\n年龄：\n联系方式：</string>
+    <string name="txt_ticket_info_name">姓名：\n性别：\n联系方式：</string>
+    <!--学生信息-->
+    <string name="txt_student_info_name">姓名：\n性别：\n联系方式：\n报名时间：</string>
 </resources>

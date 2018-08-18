@@ -23,7 +23,6 @@ public class GsonResponsePasare<T> implements ParameterizedType {
 
 //        BaseResponse<T> commonResponse = new Gson().fromJson(response, gsonType);
         BaseResponse<T> commonResponse = JSON.parseObject(response, gsonType);
-        Logger.i("Data is : " + commonResponse.data + " Class Type is : " + commonResponse.data.getClass().toString());
         return commonResponse.data;
     }
 

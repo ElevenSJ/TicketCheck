@@ -24,5 +24,7 @@ public class UrlConfig {
     public static final String CLASS_BY_ID_URL = "/appClassById";
     //app检票
     public static final String SCANNING_QR_URL = "/appScanningQR";
+    //检票记录
+    public static final String TICKET_CHECK_LIST_URL = "/appCheckRecord";
 
 }

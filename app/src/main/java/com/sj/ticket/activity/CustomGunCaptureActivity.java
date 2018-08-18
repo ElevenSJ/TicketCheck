@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jady.retrofitclient.HttpManager;
+import com.orhanobut.logger.Logger;
 import com.sj.module_lib.http.Callback;
 import com.sj.module_lib.http.GsonResponsePasare;
 import com.sj.module_lib.utils.SPUtils;
@@ -44,7 +45,7 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
     @BindView(R.id.et_qcode)
     EditText etQcode;
 
-    String classId;
+//    String classId;
     String token;
 
     List<TicketBean> ticketList = new ArrayList<>();
@@ -55,11 +56,12 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
         @Override
         public void run() {
             etQcode.setEnabled(false);
-            doCheck(etQcode.getText().toString());
+            doCheck(etQcode.getText().toString().toLowerCase());
         }
     };
 
     private void doCheck(String result) {
+        Logger.i("扫描信息:"+result);
         if (TextUtils.isEmpty(result)) {
             ToastUtils.showShortToast("未扫描到信息");
             etQcode.setEnabled(true);
@@ -68,7 +70,7 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
             etQcode.setFocusableInTouchMode(true);
             return;
         }
-        if (result.indexOf("studentId") == -1) {
+        if (result.indexOf("student") == -1||result.indexOf("class") == -1) {
             ToastUtils.showShortToast("信息不正确");
             etQcode.setEnabled(true);
             etQcode.setText("");
@@ -79,9 +81,15 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
         showProgress();
         String[] strs = result.split("&");
         String studentId = "";
+        String classId = "";
         for (String str : strs) {
-            if (str.startsWith("studentId")) {
-                studentId = str.replace("studentId=", "");
+            if (str.startsWith("student")) {
+                String[] studentArray = str.split("=");
+                studentId =studentArray.length>0?studentArray[1]:"";
+            }
+            if (str.startsWith("class")) {
+                String[] classArray = str.split("=");
+                classId =classArray.length>0?classArray[1]:"";
             }
         }
 //        Uri.Builder builder = Uri.parse(UrlConfig.BASE_URL + UrlConfig.SCANNING_QR_URL).buildUpon();
@@ -135,9 +143,9 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
     @Override
     public void initView() {
         super.initView();
-        classId = getIntent().getStringExtra("id");
+//        classId = getIntent().getStringExtra("id");
         token = (String) SPUtils.getInstance().getSharedPreference(SPName.TOKEN_ID, "");
-
+        setTitleTxt("扫码检票");
         myPagerAdapter = new TicketPagerAdapter(this, ticketList);//创建适配器实例
         viewPager.setAdapter(myPagerAdapter);//为ViewPager设置适配器
     }
@@ -161,7 +169,7 @@ public class CustomGunCaptureActivity extends AppBaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().length() > 0) {
-                    hander.postDelayed(runnable, 800);
+                    hander.postDelayed(runnable, 600);
                 }
             }
         });

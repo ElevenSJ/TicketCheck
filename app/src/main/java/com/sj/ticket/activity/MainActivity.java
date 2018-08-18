@@ -135,32 +135,6 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
 
     }
 
-    @Override
-    public void onTitleRightClick() {
-        showExitDialog();
-    }
-
-    public void showExitDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialog);
-        builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("退出");
-        builder.setMessage("是否退出");//提示内容
-        builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                exitApp();
-            }
-        });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
 
     public void exitApp() {
         showProgress();

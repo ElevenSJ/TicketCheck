@@ -96,8 +96,6 @@ public class TicketPagerAdapter extends PagerAdapter {
                     stringBuffer.append("\n");
                     stringBuffer.append(ticketBean.getStudent().getSex().equals("0") ? "女" : "男");
                     stringBuffer.append("\n");
-                    stringBuffer.append(ticketBean.getStudent().getAge());
-                    stringBuffer.append("\n");
                     stringBuffer.append(ticketBean.getStudent().getPhone());
                     txtStudentInfo.setText(stringBuffer.toString());
                 }

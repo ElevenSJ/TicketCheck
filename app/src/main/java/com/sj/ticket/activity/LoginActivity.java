@@ -126,6 +126,7 @@ public class LoginActivity extends AppBaseActivity {
         if (refresh) {
             timer.start();
         } else {
+            timer.cancel();
             timer.onFinish();
         }
     }

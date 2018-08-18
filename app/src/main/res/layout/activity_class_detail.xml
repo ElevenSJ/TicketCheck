@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="match_parent">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.32" />
+    <include
+        android:id="@+id/layout_title"
+        layout="@layout/activity_title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/txt_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/img_icon"
+        app:layout_constraintTop_toBottomOf="@+id/layout_title" />
 
     <TextView
         android:id="@+id/txt_course_time"
         style="@style/TxtCommonGraySmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/img_course_time"
         android:drawablePadding="4dp"
         android:text="TextView"
@@ -49,54 +51,32 @@
         app:layout_constraintStart_toStartOf="@+id/txt_course_time"
         app:layout_constraintTop_toBottomOf="@+id/txt_course_time" />
 
-    <Button
-        android:id="@+id/bt_qr_gang"
-        style="@style/TxtCommonBlackNormal"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/shape_circle_button"
-        android:text="扫码枪"
-        app:layout_constraintStart_toStartOf="@+id/txt_course_address"
-        app:layout_constraintTop_toBottomOf="@+id/txt_course_address" />
-
-    <Button
-        android:id="@+id/bt_qr_camera"
-        style="@style/TxtCommonBlackNormal"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/shape_circle_button"
-        android:text="相机"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_qr_gang"
-        app:layout_constraintEnd_toStartOf="@+id/tv_history"
-        app:layout_constraintStart_toEndOf="@+id/bt_qr_gang"
-        app:layout_constraintTop_toTopOf="@+id/bt_qr_gang" />
-
     <ImageView
         android:id="@+id/img_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_qr_gang"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_course_address"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txt_name"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_history"
-        style="@style/TxtCommonGrayNormal"
-        android:layout_width="wrap_content"
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/ryl_view"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:drawableLeft="@drawable/img_check_history"
-        android:drawablePadding="4dp"
-        android:gravity="center"
-        android:text="检票记录"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_qr_camera"
-        app:layout_constraintEnd_toEndOf="@+id/txt_course_address"
-        app:layout_constraintTop_toTopOf="@+id/bt_qr_camera" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_course_address"
+        app:layout_empty="@layout/layout_view_empty"
+        app:layout_error="@layout/layout_load_error"
+        app:layout_progress="@layout/layout_load_progress"
+        app:scrollbarStyle="insideOverlay" />
 </android.support.constraint.ConstraintLayout>

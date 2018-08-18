@@ -6,13 +6,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <!-- 隐藏标题栏 -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
     <style name="AppTheme.Fullscreen" parent="AppTheme">
@@ -22,7 +22,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+    <style name="CustomDialog" parent="Base.AlertDialog.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFrame">@null</item>
         <!--边框-->

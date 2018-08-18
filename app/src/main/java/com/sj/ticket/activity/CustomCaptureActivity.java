@@ -47,7 +47,7 @@ public class CustomCaptureActivity extends AppBaseActivity {
 
     CaptureFragment captureFragment;
 
-    String classId;
+//    String classId;
     String token;
 
     Handler hander = new Handler(Looper.getMainLooper());
@@ -80,7 +80,7 @@ public class CustomCaptureActivity extends AppBaseActivity {
             hander.post(runnable);
             return;
         }
-        if (result.indexOf("studentId") == -1) {
+        if (result.indexOf("student") == -1||result.indexOf("class") == -1) {
             ToastUtils.showShortToast("信息不正确");
             hander.post(runnable);
             return;
@@ -88,9 +88,15 @@ public class CustomCaptureActivity extends AppBaseActivity {
         showProgress();
         String[] strs = result.split("&");
         String studentId = "";
+        String classId = "";
         for (String str : strs) {
-            if (str.startsWith("studentId")) {
-                studentId = str.replace("studentId=", "");
+            if (str.startsWith("student")) {
+                String[] studentArray = str.split("=");
+                studentId =studentArray.length>0?studentArray[1]:"";
+            }
+            if (str.startsWith("class")) {
+                String[] classArray = str.split("=");
+                classId =classArray.length>0?classArray[1]:"";
             }
         }
 //        Uri.Builder builder = Uri.parse(UrlConfig.BASE_URL + UrlConfig.SCANNING_QR_URL).buildUpon();
@@ -142,7 +148,7 @@ public class CustomCaptureActivity extends AppBaseActivity {
     @Override
     public void initView() {
         super.initView();
-        classId = getIntent().getStringExtra("id");
+//        classId = getIntent().getStringExtra("id");
         token = (String) SPUtils.getInstance().getSharedPreference(SPName.TOKEN_ID, "");
 
         myPagerAdapter = new TicketPagerAdapter(this, ticketList);//创建适配器实例
